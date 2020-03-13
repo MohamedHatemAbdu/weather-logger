@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+
+    defaultConfig {
+
+        applicationId "com.me.wetherlogger"
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+        multiDexEnabled true
+
+    }
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    def presentationDependencies = rootProject.ext.presentationDependencies
+
+    // other
+    implementation presentationDependencies.kotlin
+    implementation presentationDependencies.kotlinReflections
+
+    // android support libs
+    implementation presentationDependencies.material
+    implementation presentationDependencies.appCompat
+    implementation presentationDependencies.recyclerview
+
+    //UI
+    implementation presentationDependencies.navigationFragmentKtx
+    implementation presentationDependencies.navigationUIKtx
+
+    // ui
+    implementation presentationDependencies.materialDialogsCore
+
+    implementation presentationDependencies.constraintLayout
+
+    // database
+    implementation presentationDependencies.room
+    kapt presentationDependencies.roomCompiler
+    implementation presentationDependencies.roomCommon
+    implementation presentationDependencies.roomRxJava
+
+    //dagger
+    kapt presentationDependencies.daggerCompiler
+    kapt presentationDependencies.daggerAndroidProcessor
+    implementation presentationDependencies.daggerAndroidSupport
+    implementation presentationDependencies.dagger
+    implementation presentationDependencies.daggerAndroid
+
+    //lifecycle
+    implementation presentationDependencies.lifeCycleExtensions
+
+
+
+    // moshi
+    implementation presentationDependencies.moshi
+
+    //multidex
+    implementation presentationDependencies.multidex
+
+    implementation project(':data')
+    implementation project(':domain')
+
+}
+repositories {
+    mavenCentral()
+    google()
+}

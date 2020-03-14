@@ -1,4 +1,5 @@
-package sa.thiqah.presentation.base.model
+package com.me.presentation.base.model
+
 
 
 data class Resource<out T>(

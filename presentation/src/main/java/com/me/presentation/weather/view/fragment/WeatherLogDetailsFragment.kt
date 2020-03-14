@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import com.me.domain.weather.entity.WeatherEntity
 import com.me.presentation.R
+import com.me.presentation.base.model.Resource
 import com.me.presentation.base.viewmodel.ViewModelFactory
 import com.me.presentation.databinding.FragmentWeatherLogDetailsBinding
 import com.me.presentation.weather.model.WeatherModel
@@ -70,13 +71,17 @@ class WeatherLogDetailsFragment : Fragment() {
     }
 
 
-    private fun updateWeatherLog(weathetEntity: WeatherEntity) {
-        weatherModel.country.set( weathetEntity.country)
-        weatherModel.dateCreated.set( weathetEntity.dateCreated)
-        weatherModel.dt.set( weathetEntity.dt)
-        weatherModel.name.set( weathetEntity.name)
-        weatherModel.temp.set( weathetEntity.temp)
-        weatherModel.description.set( weathetEntity.description)
+    private fun updateWeatherLog(resource: Resource<WeatherEntity>?) {
+        resource?.let {
+            it.data?.let { weatherEntity ->
+                weatherModel.country.set(weatherEntity.country)
+                weatherModel.dateCreated.set(weatherEntity.dateCreated)
+                weatherModel.dt.set(weatherEntity.dt)
+                weatherModel.name.set(weatherEntity.name)
+                weatherModel.temp.set(weatherEntity.temp)
+                weatherModel.description.set(weatherEntity.description)
+            }
+        }
 
     }
 

@@ -1,9 +1,9 @@
 package com.me.presentation.base.extensions
 
 import androidx.lifecycle.MutableLiveData
+import com.me.presentation.base.model.Resource
+import com.me.presentation.base.model.ResourceState
 
-import sa.thiqah.presentation.base.model.Resource
-import sa.thiqah.presentation.base.model.ResourceState
 
 fun <T> MutableLiveData<Resource<T>>.setSuccess(data: T) =
     postValue(

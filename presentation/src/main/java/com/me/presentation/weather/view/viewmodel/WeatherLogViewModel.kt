@@ -6,16 +6,16 @@ import com.me.domain.weather.usecase.WeatherUseCase
 import com.me.presentation.base.extensions.setError
 import com.me.presentation.base.extensions.setLoading
 import com.me.presentation.base.extensions.setSuccess
+import com.me.presentation.base.model.Resource
 import com.me.presentation.base.viewmodel.BaseViewModel
 
 import io.reactivex.schedulers.Schedulers
-import sa.thiqah.presentation.base.model.Resource
 
 class WeatherLogViewModel constructor(private val weatherUseCase: WeatherUseCase) :
     BaseViewModel() {
 
     val weatherLogsList = MutableLiveData<Resource<List<WeatherEntity>>>()
-    val weatherLog = MutableLiveData<WeatherEntity>()
+    val weatherLog = MutableLiveData<Resource<WeatherEntity>>()
 
     fun getWeatherLogs() =
         compositeDisposable.add(
@@ -33,13 +33,16 @@ class WeatherLogViewModel constructor(private val weatherUseCase: WeatherUseCase
         compositeDisposable.add(
             weatherUseCase.getRemoteWeatherLog(
                 cityId
-            ).subscribeOn(Schedulers.io())
+            ).doOnSubscribe { weatherLog.setLoading() }
+                .subscribeOn(Schedulers.io())
                 .subscribe(
+
                     {
-                        weatherLog.postValue(it)
+                        weatherLog.setSuccess(it)
+
                     }
                     , {
-                        weatherLogsList.setError(it.message)
+                        weatherLog.setError(it.message)
                     })
         )
     }
@@ -49,7 +52,7 @@ class WeatherLogViewModel constructor(private val weatherUseCase: WeatherUseCase
             weatherUseCase.getCachedWeatherLog(
                 dateCreated
             ).subscribeOn(Schedulers.io())
-                .subscribe({ weatherLog.postValue(it) }, { })
+                .subscribe({ weatherLog.setSuccess(it) }, { })
         )
     }
 

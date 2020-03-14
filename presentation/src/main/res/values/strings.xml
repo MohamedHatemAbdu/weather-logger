@@ -1,3 +1,30 @@
 <resources>
-    <string name="app_name">presentation</string>
+    <string name="app_name">Riga Latvia Weather Logger</string>
+
+    <string name="weather_log_list_fragment_label">Weather Logs</string>
+    <string name="weather_log_details_fragment_label">Weather Log Details</string>
+
+    <!-- weather_log_list-->
+
+    <string name="weather_log_list_no_cached_data">There is no cached data,
+        press the save button in the toolbar to fetch new data</string>
+    <string name="weather_log_list_snack_bar_action">Ok</string>
+
+    <!-- weather_log_item-->
+    <string name="weather_log_item_more_details_label">Click To See more details</string>
+    <string name="weather_log_item_date_created_label">Created: %s</string>
+    <string name="weather_log_item_temperature_label">Temperature: %s</string>
+
+    <!-- weather_log_details-->
+    <string name="weather_log_details_temperature_label">Temperature: %s</string>
+    <string name="weather_log_details_date_calculation_label">Calculation Date: %s</string>
+    <string name="weather_log_details_country_label">Country: %s</string>
+    <string name="weather_log_details_city_name_label">City: %s</string>
+    <string name="weather_log_details_description_label">Description: %s</string>
+
+    <!-- menu-->
+    <string name="action_clear_all">Clear All</string>
+    <string name="action_remove">Delete Weather data</string>
+    <string name="action_save">Get Weather Data</string>
+
 </resources>

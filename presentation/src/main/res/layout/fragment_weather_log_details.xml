@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.me.presentation.base.utils.DateUtilsKt" />
+
+        <variable
+            name="weatherModel"
+            type="com.me.presentation.weather.model.WeatherModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tvWeatherLogDetailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+
+        <TextView
+            android:id="@+id/tvWeatherLogDetailsTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/weather_log_details_temperature_label(weatherModel.temp)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Temp:" />
+
+        <TextView
+            android:id="@+id/tvWeatherLogDetailsDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/weather_log_details_date_calculation_label(DateUtilsKt.formatDate(weatherModel.dt))}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWeatherLogDetailsTemp"
+            tools:text="Calculation Date: " />
+
+        <TextView
+            android:id="@+id/tvWeatherLogDetailsCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/weather_log_details_country_label(weatherModel.country)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWeatherLogDetailsDate"
+            tools:text="Country: " />
+
+        <TextView
+            android:id="@+id/tvWeatherLogDetailsCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/weather_log_details_country_label(weatherModel.name)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWeatherLogDetailsCountry"
+            tools:text="City: " />
+
+        <TextView
+            android:id="@+id/tvWeatherLogDetailsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{@string/weather_log_details_description_label(weatherModel.description)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWeatherLogDetailsCity"
+            tools:text="Description: " />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

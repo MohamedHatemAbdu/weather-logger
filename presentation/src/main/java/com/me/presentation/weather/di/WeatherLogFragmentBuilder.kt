@@ -13,7 +13,7 @@ abstract class WeatherLogFragmentBuilder {
     abstract fun bindWeatherLogListFragment(): WeatherLogListFragment
 
     @ContributesAndroidInjector(modules = [WeatherModule::class])
-    abstract fun bindPostDetailFragment(): WeatherLogDetailsFragment
+    abstract fun bindWeatherLogDetailFragment(): WeatherLogDetailsFragment
 
 }
 

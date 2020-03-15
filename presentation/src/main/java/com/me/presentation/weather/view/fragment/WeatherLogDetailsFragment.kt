@@ -93,7 +93,7 @@ class WeatherLogDetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_delete -> {
             dateCreated?.let {
-                vm.deletePost(it)
+                vm.deleteWeatherLog(it)
             }
             NavHostFragment.findNavController(this).popBackStack()
             true

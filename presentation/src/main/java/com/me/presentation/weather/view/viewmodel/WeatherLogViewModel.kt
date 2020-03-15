@@ -16,6 +16,7 @@ class WeatherLogViewModel constructor(private val weatherUseCase: WeatherUseCase
 
     val weatherLogsList = MutableLiveData<Resource<List<WeatherEntity>>>()
     val weatherLog = MutableLiveData<Resource<WeatherEntity>>()
+    val isDeletedWetherLog = MutableLiveData<Resource<Boolean>>()
 
     fun getWeatherLogs() =
         compositeDisposable.add(
@@ -52,17 +53,23 @@ class WeatherLogViewModel constructor(private val weatherUseCase: WeatherUseCase
             weatherUseCase.getCachedWeatherLog(
                 dateCreated
             ).subscribeOn(Schedulers.io())
-                .subscribe({ weatherLog.setSuccess(it) }, { })
+                .subscribe({ weatherLog.setSuccess(it) }, {
+                    weatherLog.setError(it.message)
+                })
         )
     }
 
 
-    fun deletePost(dateCreated: Long) {
+    fun deleteWeatherLog(dateCreated: Long) {
         compositeDisposable.add(
             weatherUseCase.deleteWeatherLog(
                 dateCreated
             ).subscribeOn(Schedulers.io())
-                .subscribe({}, {})
+                .subscribe({
+                    isDeletedWetherLog.setSuccess(true)
+                }, {
+                    isDeletedWetherLog.setError(it.message)
+                })
         )
     }
 

@@ -22,6 +22,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDir sharedTestDir
+        }
+        androidTest {
+            java.srcDir sharedTestDir
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 
 }
 
@@ -46,6 +62,17 @@ dependencies {
     kapt dataDependencies.roomCompiler
     implementation dataDependencies.roomRxJava
     implementation dataDependencies.roomKTX
+
+    // test
+    testImplementation dataTestDependencies.junit
+    testImplementation dataTestDependencies.mockitoKotlin
+    testImplementation dataTestDependencies.mockitoKotlinInline
+
+    // android test
+    androidTestImplementation dataTestDependencies.androidTestCore
+    androidTestImplementation dataTestDependencies.androidTestRunner
+    androidTestImplementation dataTestDependencies.androidTestRules
+    androidTestImplementation dataTestDependencies.archlifecycleTesting
 
 
     implementation project(':domain')

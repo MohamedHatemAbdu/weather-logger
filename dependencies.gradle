@@ -43,8 +43,19 @@ ext {
 
 
     // testing
-    mockitoVersion = '3.2.4'
-    mockitoInlineVersion = "3.2.4"
+    mockitoKotlinVersion = '2.19.0'
+    mockitoVersion = '2.19.0'
+    mockitoInlineVersion = "2.19.0"
+    supportTest = '1.1.0-alpha1'
+    supportTestCore = '1.0.0'
+    espressoVersion = '3.1.0-alpha1'
+    junitVersion = '4.12'
+
+    androidMockitoVersion = "2.11.0"
+    androidTestCoreVersion = "1.0.0"
+    androidTestRunnerVersion = "1.0.0"
+    androidTestRulesVersion = "1.1.0"
+    archlifecycleCoreTestingVersion = "2.0.1"
 
 
     //moshi
@@ -62,6 +73,10 @@ ext {
             rxAndroid: "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     ]
     domainTestDependencies = [
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            mockitoKotlin       : "org.mockito:mockito-core:$mockitoVersion",
+            junit               : "junit:junit:$junitVersion",
+            mockitoKotlinInline : "org.mockito:mockito-inline:$mockitoInlineVersion",
 
     ]
     // Data
@@ -78,6 +93,15 @@ ext {
             roomRxJava            : "androidx.room:room-rxjava2:$roomVersion"
     ]
     dataTestDependencies = [
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            mockitoKotlin       : "org.mockito:mockito-core:$mockitoVersion",
+//          mockitoKotlin       : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
+            junit               : "junit:junit:$junitVersion",
+            mockitoKotlinInline : "org.mockito:mockito-inline:$mockitoInlineVersion",
+            androidTestCore     : "androidx.test:core:$androidTestCoreVersion",
+            androidTestRunner   : "androidx.test:runner:$androidTestRunnerVersion",
+            androidTestRules    : "androidx.test:rules:$androidTestRulesVersion",
+            archlifecycleTesting: "androidx.arch.core:core-testing:$archlifecycleCoreTestingVersion"
 
     ]
     // Presentation
@@ -94,7 +118,7 @@ ext {
             material              : "com.google.android.material:material:$materialVersion",
             recyclerview          : "androidx.recyclerview:recyclerview:$recyclerviewVersion",
             lifeCycleExtensions   : "androidx.lifecycle:lifecycle-extensions:$lifeCycleExtensionsVersion",
-            materialDialogsCore    : "com.afollestad.material-dialogs:core:$materialDialogVersion",
+            materialDialogsCore   : "com.afollestad.material-dialogs:core:$materialDialogVersion",
 
             navigationFragmentKtx : "androidx.navigation:navigation-fragment-ktx:$navigationControllerVersion",
             navigationUIKtx       : "androidx.navigation:navigation-ui-ktx:$navigationControllerVersion",
@@ -111,6 +135,11 @@ ext {
 
     ]
     presentationTestDependencies = [
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            mockitoKotlin       : "org.mockito:mockito-core:$mockitoVersion",
+            junit               : "junit:junit:$junitVersion",
+            mockitoKotlinInline : "org.mockito:mockito-inline:$mockitoInlineVersion",
+            archlifecycleTesting: "androidx.arch.core:core-testing:$archlifecycleCoreTestingVersion"
 
     ]
 }

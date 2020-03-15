@@ -50,6 +50,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
 
     // other
     implementation presentationDependencies.kotlin
@@ -92,6 +93,14 @@ dependencies {
 
     //multidex
     implementation presentationDependencies.multidex
+
+
+    // test
+    testImplementation presentationTestDependencies.junit
+    testImplementation presentationTestDependencies.mockitoKotlin
+    testImplementation presentationTestDependencies.mockitoKotlinInline
+    testImplementation presentationTestDependencies.archlifecycleTesting
+
 
     implementation project(':data')
     implementation project(':domain')

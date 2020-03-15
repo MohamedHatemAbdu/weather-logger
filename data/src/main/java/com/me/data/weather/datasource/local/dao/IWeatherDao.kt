@@ -13,17 +13,17 @@ interface IWeatherDao {
     fun getAllWeatherLogs(): Flowable<List<WeatherData>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveAllWeatherLogs(wetherLogs: List<WeatherData>)
+    fun saveAllWeatherLogs(wetherLogs: List<WeatherData>) : List<Long>
 
     @Query("Select * from weatherData where dateCreated = :aDateCreated")
     fun getWeatherLog(aDateCreated: Long): Single<WeatherData>
 
     @Update
-    fun updateWeatherLog(post: WeatherData): Completable
+    fun updateWeatherLog(weatherData: WeatherData): Completable
 
     //TODO : to refactor saveWeatherLog(weatherLog.mapToData()): make it asyncrounous
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun saveWeatherLog(weatherData: WeatherData)
+    fun saveWeatherLog(weatherData: WeatherData): Long
 
     @Query("DELETE  FROM weatherData WHERE dateCreated = :aDateCreated ")
     fun deleteWeatherLog(aDateCreated: Long): Completable

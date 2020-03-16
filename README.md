@@ -4,7 +4,7 @@ Weather-Logger App
 It retreives a weather information for a specific city from [CurrentWeatherData](https://openweathermap.org/api) API. and shows the wathe information logs in a list. 
 
 
-<img src="/screenshot/screenshot_20200316-191655.png" width= "250px"/><img src="/screenshot/screenshot_20200316-191510.png" width= "250px"/>
+<img src="/screenshot/screenshot_20200316-191655.png" width= "250px"/> <img src="/screenshot/screenshot_20200316-191510.png" width= "250px"/>
 
 
 Here's some of the core android technology stack applied in this application:

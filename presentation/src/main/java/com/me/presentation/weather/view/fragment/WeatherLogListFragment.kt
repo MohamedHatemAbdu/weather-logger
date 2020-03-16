@@ -3,6 +3,7 @@ package com.me.presentation.weather.view.fragment
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.view.animation.OvershootInterpolator
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +19,8 @@ import com.me.presentation.base.viewmodel.ViewModelFactory
 import com.me.presentation.weather.view.adapter.WeatherLogListAdapter
 import com.me.presentation.weather.view.viewmodel.WeatherLogViewModel
 import dagger.android.support.AndroidSupportInjection
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
+import jp.wasabeef.recyclerview.animators.SlideInUpAnimator
 import kotlinx.android.synthetic.main.fragment_weather_log_list.*
 
 import javax.inject.Inject
@@ -94,6 +97,7 @@ class WeatherLogListFragment : Fragment() {
 
         adapter.itemClick = aItemClick
         rvWeatherLogList.adapter = adapter
+        rvWeatherLogList.itemAnimator = SlideInUpAnimator(OvershootInterpolator(3f))
 
         vm.weatherLogsList.observe(this, Observer { updateWeatherLogs(it) })
         vm.weatherLog.observe(this, Observer { updateLoadingState(it.state) })

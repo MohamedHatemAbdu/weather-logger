@@ -69,6 +69,8 @@ dependencies {
     implementation presentationDependencies.materialDialogsCore
 
     implementation presentationDependencies.constraintLayout
+    implementation presentationDependencies.recyclerviewAnimators
+
 
     // database
     implementation presentationDependencies.room

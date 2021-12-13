@@ -22,7 +22,7 @@ class AppModule {
 
     @Provides
     fun provideDatabaseName(): String {
-        return "WeatherLoggerAppDatabase"
+        return "PatientsLoggerAppDatabase"
     }
 
     @Provides
